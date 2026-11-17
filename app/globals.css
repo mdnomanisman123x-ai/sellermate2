@@ -205,3 +205,72 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+
+/* Mobile-first refinements */
+html,body{overflow-x:hidden}
+@media(max-width:700px){
+  .sidebar{
+    height:calc(68px + env(safe-area-inset-bottom));
+    padding:5px 4px calc(5px + env(safe-area-inset-bottom));
+  }
+  .sidebar nav{
+    display:flex;
+    align-items:stretch;
+    justify-content:space-between;
+    gap:2px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .sidebar nav::-webkit-scrollbar{display:none}
+  .nav-item{
+    flex:1 1 0;
+    min-width:0;
+    padding:6px 1px;
+    gap:4px;
+    font-size:clamp(7px,2.25vw,9px);
+    white-space:nowrap;
+  }
+  .nav-icon{font-size:18px;line-height:1}
+  .main-area{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  .content{
+    width:100%;
+    max-width:760px;
+    margin:0 auto;
+    padding:22px 14px calc(22px + env(safe-area-inset-bottom));
+  }
+  .welcome-row{align-items:center;flex-wrap:wrap}
+  .welcome-row>div{min-width:0;flex:1 1 190px}
+  .welcome-row .primary-button{flex:0 0 auto}
+  .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .dashboard-grid,.privacy-grid{grid-template-columns:minmax(0,1fr)}
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .quick-action{
+    min-width:0;
+    min-height:76px;
+    grid-template-columns:31px minmax(0,1fr);
+    column-gap:8px;
+    padding:11px;
+  }
+  .quick-action b,.quick-action small{overflow-wrap:anywhere}
+  .quick-action small{line-height:1.4}
+  .panel-heading{align-items:flex-start}
+  .panel-heading h2{line-height:1.4}
+  .activity-row{min-width:0}
+  .activity-title{min-width:0}
+  .activity-title b{overflow-wrap:anywhere}
+  .activity-row strong{white-space:nowrap}
+  .table-wrap{max-width:100%;overscroll-behavior-x:contain}
+}
+@media(max-width:380px){
+  .content{padding-left:11px;padding-right:11px}
+  .welcome-row h1{font-size:20px}
+  .subheading{max-width:210px}
+  .metric-card{padding:11px}
+  .metric-card strong{font-size:16px}
+  .metric-top{font-size:8px}
+  .metric-icon{width:24px;height:24px}
+  .quick-grid{grid-template-columns:1fr}
+  .panel{padding:13px}
+  .nav-item{font-size:7px}
+}
