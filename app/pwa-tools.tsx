@@ -12,12 +12,18 @@ export default function PwaTools() {
   const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
+    const registerServiceWorker = () => {
+      if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/sw.js").catch(() => {
           // The app still works online if offline support cannot be registered.
         });
-      });
+      }
+    };
+
+    if (document.readyState === "complete") {
+      registerServiceWorker();
+    } else {
+      window.addEventListener("load", registerServiceWorker, { once: true });
     }
 
     const onBeforeInstall = (event: Event) => {
@@ -34,6 +40,7 @@ export default function PwaTools() {
     window.addEventListener("appinstalled", onInstalled);
 
     return () => {
+      window.removeEventListener("load", registerServiceWorker);
       window.removeEventListener("beforeinstallprompt", onBeforeInstall);
       window.removeEventListener("appinstalled", onInstalled);
     };
