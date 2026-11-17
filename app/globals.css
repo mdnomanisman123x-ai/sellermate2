@@ -172,3 +172,36 @@ td:first-child{font-weight:700;color:#26362d}
   .top-avatar{width:27px;height:27px}
   .language{font-size:9px;padding:6px 8px}
 }
+
+
+.install-app-button{
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  z-index:15;
+  border:0;
+  border-radius:999px;
+  background:#116b4a;
+  color:#fff;
+  padding:12px 17px;
+  min-height:44px;
+  box-shadow:0 8px 24px #0d604233;
+  font-size:12px;
+  font-weight:800;
+}
+.install-app-button:hover{background:#0d6042}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid #83d5ad;
+  outline-offset:3px;
+}
+@media(max-width:700px){
+  .install-app-button{
+    right:12px;
+    bottom:78px;
+    font-size:11px;
+    padding:11px 14px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
