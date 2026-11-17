@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import PwaTools from "./pwa-tools";
+import AuthGate from "./auth-gate";
 
 export const metadata: Metadata = {
   title: {
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="bn">
       <body>
-        {children}
+        <AuthGate>{children}</AuthGate>
         <PwaTools />
       </body>
     </html>
